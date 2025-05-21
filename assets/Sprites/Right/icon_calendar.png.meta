@@ -2,7 +2,7 @@
   "ver": "2.3.3",
   "uuid": "f0824892-8fcb-4dd8-b49e-49496639672d",
   "type": "sprite",
-  "wrapMode": "clamp",
+  "wrapMode": "repeat",
   "filterMode": "bilinear",
   "premultiplyAlpha": false,
   "genMipmaps": false,
@@ -11,7 +11,7 @@
   "subMetas": {
     "icon_calendar": {
       "ver": "1.0.4",
-      "uuid": "68313686-cd7f-4dc1-8e5c-2d357b1df381",
+      "uuid": "c0f72eb4-b45c-43af-95a1-093d6ae96db0",
       "rawTextureUuid": "f0824892-8fcb-4dd8-b49e-49496639672d",
       "trimType": "auto",
       "trimThreshold": 1,
