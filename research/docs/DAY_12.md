@@ -2,7 +2,7 @@
 
 Research about Cocos.
 
-## Day 12 - May 21, 2025
+## Day 02 - May 21, 2025
 
 ### 1. Research about Wrap mode, Filter Mode and Premultiply Alpha
 **Warp Mode**: Chế độ lặp ảnh mà Cocos xử lý khi hình ảnh bị vẽ rộng hơn ảnh gốc (tọa độ UV vượt ra khỏi phạm vi [0,1]). 
