@@ -25,6 +25,11 @@ Filter Mode có 3 chế độ chính:
 - **Bilinear**: Engine sẽ chọn màu từ 4 pixel gần nhất và tính trung bình để ra được màu cần vẽ, dẫn đến các pixel được vẽ ra sẽ tạo cảm giác mềm mại, mượt mà hơn là **Point**. Tuy nhiên do phải tính giá trị trung bình từ 4 pixel gần nhất nên sẽ tốn nhiều tài nguyên hơn so với **Point**
 - **Trilinear**: Engine sẽ chọn 2 mipmap (các phiên phản nhỏ hơn của ảnh gốc), trong đó có 1 mipmap nhỏ hơn và 1 mipmap lớn hơn. Sau đó sẽ dùng **Bilinear** trên 2 mipmap đó và sẽ ra được 2 màu, từ 2 màu này sẽ tính ra được màu của pixel cần vẽ. Nhờ đó mà Trilinear sẽ cho ra được hình ảnh có mượt mà nhất trong 3 chế độ, đặc biệt là các task liên quan đến zoom in, zoom out. Tuy nhiên, vì tính toán khá nhiều nên chế độ này cũng tốn nhiều tài nguyên nhất trong 3 chế độ.
 
+**Premultiply Alpha**: là cách lưu trữ màu pixel trong đó giá trị màu của pixel là màu RGB nhân với giá trị Alpha (độ trong suốt).
+
+Ví dụ: Bình thường giá trị của pixel là (R, G, B, A), pixel sẽ giữ nguyên màu RGB gốc và Alpha chỉ ảnh hưởng khi render. Sau khi áp dụng premultiply alpha pixel được lưu sẽ là (R×A, G×A, B×A, A), pixel sẽ lưu giá trị RGB được pha trộn với Alpha.
+
+Bởi vì khi render ảnh trong suốt, nếu không dùng Premultiply Alpha thì vùng trong suốt đó có thể xuất hiện viền trắng, đen hoặc là nhiễu màu của màu RGB gốc.
 ### 2. Research about Auto Atlas
 **Auto Atlas** là một tính năng mà Cocos giúp ta tự động gộp nhiều hình ảnh thành một ảnh lớn duy nhất (gọi là sprite sheet) khi build project. Và khi dùng thì engine chỉ cần tải mỗi sprite sheet này lên, điều này sẽ giúp cho tối ưu hiệu suất khi render vì sẽ giảm được số lần vẽ (draw call).
 
