@@ -1,0 +1,36 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "play2",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 3,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "opacity": [
+        {
+          "frame": 0,
+          "value": 255,
+          "curve": [
+            0.6,
+            -0.27,
+            0.73,
+            0.04
+          ]
+        },
+        {
+          "frame": 1.5,
+          "value": 0,
+          "curve": "circIn"
+        },
+        {
+          "frame": 3,
+          "value": 255
+        }
+      ]
+    }
+  },
+  "events": []
+}
