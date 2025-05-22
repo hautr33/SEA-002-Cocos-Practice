@@ -1,6 +1,6 @@
 {
   "ver": "2.3.3",
-  "uuid": "d9d9ec1d-1c62-4fb7-851a-6384b00e7f0d",
+  "uuid": "089fd4b5-b959-45cb-98e4-790c52b33c83",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -9,10 +9,10 @@
   "packable": true,
   "platformSettings": {},
   "subMetas": {
-    "Button_Rectangle_05_Deco_White_Bg": {
+    "Slider_Basic_Rectangle_Bg": {
       "ver": "1.0.4",
-      "uuid": "c793b824-a360-4017-9686-4a008282de6c",
-      "rawTextureUuid": "d9d9ec1d-1c62-4fb7-851a-6384b00e7f0d",
+      "uuid": "f79f1571-87f8-4c06-ad91-7a65945402d9",
+      "rawTextureUuid": "089fd4b5-b959-45cb-98e4-790c52b33c83",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -20,10 +20,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 82,
-      "height": 77,
-      "rawWidth": 82,
-      "rawHeight": 77,
+      "width": 4,
+      "height": 10,
+      "rawWidth": 4,
+      "rawHeight": 10,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
