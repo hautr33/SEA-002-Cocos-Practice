@@ -1,13 +1,3 @@
-// Learn cc.Class:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] https://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-
 cc.Class({
     extends: cc.Component,
 
@@ -30,9 +20,6 @@ cc.Class({
         sliderTrack: cc.Node,
         sliderThumb: cc.Node,
     },
-
-    // LIFE-CYCLE CALLBACKS:
-
     onLoad() {
         this.iconBgmOff.active = true;
         this.iconBgmOn.active = false;
@@ -69,12 +56,12 @@ cc.Class({
             newX = this.sliderBackground.x + this.sliderBackground.width
         if (newX < this.sliderBackground.x)
             newX = this.sliderBackground.x
+
         this.sliderThumb.x = newX;
         this.sliderTrack.width = newX - this.sliderBackground.x
         this.percent = (newX - this.sliderBackground.x) / this.sliderBackground.width;
-        console.log(this.percent)
+
         cc.audioEngine.setMusicVolume(this.percent);
         cc.audioEngine.setVolume(this.bgmId, this.percent);
-
     }
 });
