@@ -1,13 +1,3 @@
-// Learn cc.Class:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] https://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-
 cc.Class({
     extends: cc.Component,
 
@@ -20,25 +10,7 @@ cc.Class({
         counterLabel: cc.Label,
         font_1: cc.Font,
         font_2: cc.Font
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
     },
-
-    // LIFE-CYCLE CALLBACKS:
-
     onLoad() {
         this.counter = 0;
         this.colorCounter = 0;
@@ -50,11 +22,6 @@ cc.Class({
         this.initLabel();
         this.updateLabel();
     },
-
-    start() {
-
-    },
-
     updateLabel() {
         this.counterLabel.string = 'Counter: ' + this.counter;
     },
@@ -88,8 +55,6 @@ cc.Class({
             this.counterLabel.node.opacity = 255;
             this.blinkButtonLabel.string = "Blink: On";
         }
-
-
     },
     onFontClick() {
         if (this.counterLabel.font === this.font_1) {
@@ -147,5 +112,4 @@ cc.Class({
             this.opacityDirection = -1;
         }
     },
-
 });
