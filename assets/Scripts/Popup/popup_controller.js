@@ -5,16 +5,16 @@ cc.Class({
         popupSetting: require('popup_item'),
         popupRank: require('popup_item'),
     },
-    showSetting(){
+    showSetting() {
         this.popupSetting.show()
     },
-    showRank(){
+    showRank() {
         this.popupRank.show()
     },
-    hideSetting(){
+    hideSetting() {
         this.popupSetting.hide()
     },
-    hideRank(){
+    hideRank() {
         this.popupRank.hide()
     },
 });
