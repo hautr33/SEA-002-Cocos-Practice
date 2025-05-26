@@ -17,7 +17,7 @@ cc.Class({
     onLoad() {
         this.isBgmOn = false;
         this.sliderThumb.on(cc.Node.EventType.TOUCH_MOVE, this.onChangeVolume, this)
-        this.setVolume(0.75);
+        this.setVolume(0.7);
     },
     setMusiceOn(isOn) {
         if (isOn)
@@ -28,7 +28,6 @@ cc.Class({
     onButtonClick() {
         cc.audioEngine.playEffect(this.clickSound, false);
         console.log("playckick");
-        
     },
     setVolume(percent, IDs = []) {
         cc.audioEngine.setMusicVolume(percent);

@@ -12,5 +12,13 @@ cc.Class({
         }else{
             this.soundController.setMusiceOn(false)
         }
+    },
+    onSfxToggleClick(toggle, data){
+        console.log(toggle.isChecked)
+        if(toggle.isChecked){
+            this.soundController.setEffectOn(true)
+        }else{
+            this.soundController.setEffectOn(false)
+        }
     }
 });
