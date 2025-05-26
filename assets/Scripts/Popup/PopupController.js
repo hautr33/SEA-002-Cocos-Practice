@@ -2,8 +2,8 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        popupSetting: require('popup_item'),
-        popupRank: require('popup_item'),
+        popupSetting: require('PopupItem'),
+        popupRank: require('PopupItem'),
     },
     showSetting() {
         this.popupSetting.show()

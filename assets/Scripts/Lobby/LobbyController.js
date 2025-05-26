@@ -2,12 +2,12 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        popupController: require('popup_controller'),
+        popupController: require('PopupController'),
     },
-    onSettingClick(){
+    onSettingClick() {
         this.popupController.showSetting()
     },
-    onRankClick(){
+    onRankClick() {
         this.popupController.showRank()
     }
 });

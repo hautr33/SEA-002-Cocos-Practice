@@ -1,5 +1,5 @@
 cc.Class({
-    extends: require('popup_item'),
+    extends: require('PopupItem'),
 
     properties: {
         tableController: cc.Node,
@@ -28,7 +28,7 @@ cc.Class({
             { name: "Player S", score: 770 },
             { name: "Player T", score: 750 }
         ];
-        this.tableController.getComponent('table_controller').showPlayer(players)
+        this.tableController.getComponent('table_controller').show(players)
         console.log("Show Ranking")
     },
     hide() {

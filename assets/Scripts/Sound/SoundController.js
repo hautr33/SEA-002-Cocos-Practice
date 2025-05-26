@@ -19,15 +19,30 @@ cc.Class({
         this.sliderThumb.on(cc.Node.EventType.TOUCH_MOVE, this.onChangeVolume, this)
         this.setVolume(0.7);
     },
+    onButtonClick() {
+        if (this.isEffectOn) {
+            cc.audioEngine.playEffect(this.clickSound, false);
+            console.log(this.clickSound)
+            console.log("playckick");
+        }
+    },
+    onSliderClick(slider, data){
+        let track = slider.node.getChildByName('Track')
+        track.width = Math.floor(200 * slider.progress)
+        this.setVolume(slider.progress)
+    },
+    setEffectOn(isOn) {
+        if (isOn)
+            this.isEffectOn = true
+        else
+            this.isEffectOn = false
+
+    },
     setMusiceOn(isOn) {
         if (isOn)
             cc.audioEngine.playMusic(this.bgmSound, true);
         else
             cc.audioEngine.stopMusic();
-    },
-    onButtonClick() {
-        cc.audioEngine.playEffect(this.clickSound, false);
-        console.log("playckick");
     },
     setVolume(percent, IDs = []) {
         cc.audioEngine.setMusicVolume(percent);
@@ -35,20 +50,5 @@ cc.Class({
         IDs.forEach(id => {
             cc.audioEngine.setVolume(id, percent);
         });
-    },
-    onChangeVolume(event) {
-        const delta = event.getDelta();
-        let newX = this.sliderThumb.x + delta.x
-
-        if (newX > this.sliderBackground.x + this.sliderBackground.width)
-            newX = this.sliderBackground.x + this.sliderBackground.width
-        if (newX < this.sliderBackground.x)
-            newX = this.sliderBackground.x
-
-        this.sliderThumb.x = newX;
-        this.sliderTrack.width = newX - this.sliderBackground.x
-        const percent = (newX - this.sliderBackground.x) / this.sliderBackground.width;
-
-        this.setVolume(percent)
     }
 });
