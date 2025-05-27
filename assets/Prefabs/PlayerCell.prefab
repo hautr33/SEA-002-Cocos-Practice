@@ -222,17 +222,17 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 55,
+      "width": 50,
       "height": 65
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 0.5,
       "y": 0.5
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -265,
+      "x": -235,
       "y": 0,
       "z": 0
     },
@@ -325,17 +325,17 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 55,
+      "width": 50,
       "height": 65
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 0.5,
       "y": 0.5
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -265,
+      "x": -235,
       "y": 0,
       "z": 0
     },
@@ -428,17 +428,17 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 55,
+      "width": 50,
       "height": 65
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 0.5,
       "y": 0.5
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -265,
+      "x": -235,
       "y": 0,
       "z": 0
     },
@@ -531,17 +531,17 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 75,
+      "width": 80,
       "height": 75
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 0.5,
       "y": 0.5
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -275,
+      "x": -235,
       "y": 0,
       "z": 0
     },
@@ -582,8 +582,10 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "01baba8f-bc1f-412d-92cb-776804fa4acf"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_N$horizontalAlign": 1,
@@ -683,8 +685,10 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "01baba8f-bc1f-412d-92cb-776804fa4acf"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_N$horizontalAlign": 1,
@@ -784,8 +788,10 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "01baba8f-bc1f-412d-92cb-776804fa4acf"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_N$horizontalAlign": 2,
