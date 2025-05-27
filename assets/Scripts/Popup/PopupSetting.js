@@ -3,10 +3,15 @@ cc.Class({
 
     properties: {
         soundController: require('SoundController'),
-        bgmToggle: cc.Toggle
+        bgmToggle: cc.Toggle,
+        sliderBackground: cc.Node,
+        sliderTrack: cc.Node,
+    },
+    onSliderClick(slider, data){
+        this.sliderTrack.width = Math.floor(this.sliderBackground.width * slider.progress)
+        this.soundController.setVolume(slider.progress)
     },
     onBgmToggleClick(toggle, data) {
-        console.log(toggle.isChecked)
         if (toggle.isChecked) {
             this.soundController.setMusiceOn(true)
         } else {

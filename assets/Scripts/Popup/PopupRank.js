@@ -29,10 +29,8 @@ cc.Class({
             { name: "Player T", score: 750 }
         ];
         this.tableController.getComponent('table_controller').show(players)
-        console.log("Show Ranking")
     },
     hide() {
         this._super();
-        console.log("Hide Ranking")
     }
 });

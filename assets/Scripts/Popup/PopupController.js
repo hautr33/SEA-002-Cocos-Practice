@@ -11,10 +11,4 @@ cc.Class({
     showRank() {
         this.popupRank.show()
     },
-    hideSetting() {
-        this.popupSetting.hide()
-    },
-    hideRank() {
-        this.popupRank.hide()
-    },
 });

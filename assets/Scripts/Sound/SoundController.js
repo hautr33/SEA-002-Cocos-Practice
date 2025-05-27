@@ -10,26 +10,15 @@ cc.Class({
             type: cc.AudioClip,
             default: null
         },
-        sliderBackground: cc.Node,
-        sliderTrack: cc.Node,
-        sliderThumb: cc.Node,
     },
     onLoad() {
         this.isBgmOn = false;
-        this.sliderThumb.on(cc.Node.EventType.TOUCH_MOVE, this.onChangeVolume, this)
         this.setVolume(0.7);
     },
     onButtonClick() {
         if (this.isEffectOn) {
             cc.audioEngine.playEffect(this.clickSound, false);
-            console.log(this.clickSound)
-            console.log("playckick");
         }
-    },
-    onSliderClick(slider, data){
-        let track = slider.node.getChildByName('Track')
-        track.width = Math.floor(200 * slider.progress)
-        this.setVolume(slider.progress)
     },
     setEffectOn(isOn) {
         if (isOn)
