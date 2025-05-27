@@ -1,5 +1,9 @@
 # SEA-002 Cocos Practice
 
+## Homework 2: Practice with UI Components and Event
+<!-- <img src="./image/Day_4.gif" width="100%"/> -->
+### [Research: TRIMMED and RAW; Circle Progress Bar](./homework/research/README.md#research-1---may-21-2025)
+
 ## Practice 2: Create Setting and Ranking popup
 <img src="./image/Day_3.gif" width="100%"/>
 

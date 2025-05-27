@@ -2,6 +2,8 @@
 
 Research about Cocos.
 
+[Back to main Readme](../../../README.md)
+
 ## Day 02 - May 21, 2025
 
 ### 1. Research about Wrap mode, Filter Mode and Premultiply Alpha
