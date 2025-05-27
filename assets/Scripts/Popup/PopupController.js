@@ -1,3 +1,6 @@
+const Emitter = require('mEmitter');
+const Events = require('EventKeys');
+
 cc.Class({
     extends: cc.Component,
 
@@ -5,10 +8,14 @@ cc.Class({
         popupSetting: require('PopupItem'),
         popupRank: require('PopupItem'),
     },
-    showSetting() {
-        this.popupSetting.show()
+    onLoad () {
+        Emitter.registerEvent(Events.POPUP.SHOW, this.onShowPopup.bind(this));
     },
-    showRank() {
-        this.popupRank.show()
+    onShowPopup(name) {
+        if (name === 'SETTING') {
+            this.popupSetting.show()
+        } else if (name === 'RANKING') {
+            this.popupRank.show()
+        }
     },
 });
