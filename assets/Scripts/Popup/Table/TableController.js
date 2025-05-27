@@ -1,3 +1,5 @@
+const Emitter = require('mEmitter');
+const Events = require('EventKeys');
 cc.Class({
     extends: cc.Component,
 
@@ -30,6 +32,10 @@ cc.Class({
         this.node.height = height
         let parent = this.node.parent
         parent.height = height
+        this.registerEvent();
+    },
+    registerEvent() {
+        Emitter.registerEvent(Events.TABLE.SHOW, this.show.bind(this));
     },
     show(data) {
         let children = this.node.children;

@@ -1,9 +1,9 @@
+const Emitter = require('mEmitter');
+const Events = require('EventKeys');
+
 cc.Class({
     extends: require('PopupItem'),
 
-    properties: {
-        tableController: cc.Node,
-    },
     show() {
         this._super();
         let players = [
@@ -28,7 +28,9 @@ cc.Class({
             { name: "Player S", score: 770 },
             { name: "Player T", score: 750 }
         ];
-        this.tableController.getComponent('table_controller').show(players)
+        Emitter.emit(Events.TABLE.SHOW, players);
+        let scrollView = this.node.getChildByName('ScrollView').getComponent(cc.ScrollView);
+        scrollView.scrollToTop(0);
     },
     hide() {
         this._super();

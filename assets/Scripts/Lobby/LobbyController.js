@@ -1,13 +1,11 @@
+const Emitter = require('mEmitter');
+const Events = require('EventKeys');
+
 cc.Class({
     extends: cc.Component,
 
-    properties: {
-        popupController: require('PopupController'),
+    onButtonClick(event, data){
+        Emitter.emit(Events.POPUP.SHOW, data);
+        Emitter.emit(Events.SOUND.PLAY, 'CLICK');
     },
-    onSettingClick() {
-        this.popupController.showSetting()
-    },
-    onRankClick() {
-        this.popupController.showRank()
-    }
 });
