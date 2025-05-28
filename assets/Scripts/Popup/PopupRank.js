@@ -1,9 +1,31 @@
-const Emitter = require('mEmitter');
+const Emitter = require('Emitter');
 const Events = require('EventKeys');
 
 cc.Class({
     extends: require('PopupItem'),
+    onLoad() {
+        this.scrollView = this.node.getChildByName('ScrollView').getComponent(cc.ScrollView);
+        this.node.active = false
+    },
+    update() {
+        this.restrictScrollY()
+    },
+    restrictScrollY() {
+        const content = this.scrollView.content;
+        const posY = content.y;
+        const viewHeight = this.scrollView.node.height;
+        const contentHeight = content.height;
 
+        if (posY < 0) {
+            content.y = 0;
+            return;
+        }
+
+        const maxY = contentHeight - viewHeight;
+        if (posY > maxY) {
+            content.y = maxY;
+        }
+    },
     show() {
         this._super();
         let players = [
@@ -29,8 +51,7 @@ cc.Class({
             { name: "Player T", score: 750 }
         ];
         Emitter.emit(Events.TABLE.SHOW, players);
-        let scrollView = this.node.getChildByName('ScrollView').getComponent(cc.ScrollView);
-        scrollView.scrollToTop(0);
+        this.scrollView.scrollToTop(0);
     },
     hide() {
         this._super();

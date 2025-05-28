@@ -1,4 +1,4 @@
-const Emitter = require('mEmitter');
+const Emitter = require('Emitter');
 const Events = require('EventKeys');
 cc.Class({
     extends: cc.Component,
@@ -7,6 +7,10 @@ cc.Class({
         playerCellPrefab: cc.Prefab
     },
     onLoad() {
+        this.initTable();
+        this.registerEvent();
+    },
+    initTable() {
         this.node.removeAllChildren();
         const startY = -30;
         const spacingY = 75;
@@ -32,10 +36,9 @@ cc.Class({
         this.node.height = height
         let parent = this.node.parent
         parent.height = height
-        this.registerEvent();
     },
     registerEvent() {
-        Emitter.registerEvent(Events.TABLE.SHOW, this.show.bind(this));
+        Emitter.registerEvent(Events.TABLE.SHOW, this.show, this);
     },
     show(data) {
         let children = this.node.children;
@@ -46,5 +49,8 @@ cc.Class({
             labelName.string = data[index].name;
             labelScore.string = data[index].score.toString();
         }
+    },
+    onDestroy() {
+        Emitter.removeEventsByTarget(this);
     }
 });

@@ -1,4 +1,4 @@
-const Emitter = require('mEmitter');
+const Emitter = require('Emitter');
 const Events = require('EventKeys');
 
 cc.Class({
@@ -8,8 +8,11 @@ cc.Class({
         popupSetting: require('PopupItem'),
         popupRank: require('PopupItem'),
     },
-    onLoad () {
-        Emitter.registerEvent(Events.POPUP.SHOW, this.onShowPopup.bind(this));
+    onLoad() {
+        this.registerEvent()
+    },
+    registerEvent() {
+        Emitter.registerEvent(Events.POPUP.SHOW, this.onShowPopup, this);
     },
     onShowPopup(name) {
         if (name === 'SETTING') {
@@ -18,4 +21,7 @@ cc.Class({
             this.popupRank.show()
         }
     },
+    onDestroy() {
+        Emitter.removeEventsByTarget(this);
+    }
 });
