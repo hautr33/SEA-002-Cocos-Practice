@@ -9,5 +9,8 @@ module.exports = {
     },
     TABLE: {
         SHOW: 'SHOW_TABLE',
+    },
+    SCENE: {
+        SWITCH: 'SWITCH_SCENE',
     }
 };
