@@ -1,4 +1,4 @@
-const Emitter = require('mEmitter');
+const Emitter = require('Emitter');
 const Events = require('EventKeys');
 
 cc.Class({
@@ -18,25 +18,25 @@ cc.Class({
         this.setVolume(0.7);
         this.registerEvent();
     },
-    registerEvent(){
-        Emitter.registerEvent(Events.SOUND.PLAY, this.playSound.bind(this));
-        Emitter.registerEvent(Events.SOUND.SET_VOLUME, this.setVolume.bind(this));
-        Emitter.registerEvent(Events.SOUND.SET_SOUND_ON, this.setSoundOn.bind(this));
+    registerEvent() {
+        Emitter.registerEvent(Events.SOUND.PLAY, this.playSound, this);
+        Emitter.registerEvent(Events.SOUND.SET_VOLUME, this.setVolume, this);
+        Emitter.registerEvent(Events.SOUND.SET_SOUND_ON, this.setSoundOn, this);
     },
     playSound(soundName) {
         if (!this.isEffectOn) return;
-        
+
         if (soundName === 'CLICK') {
             cc.audioEngine.playEffect(this.clickSound, false);
         }
     },
-    setSoundOn(data){
-        if(data.name === 'BGM') {
-        if (data.isChecked)
-            cc.audioEngine.playMusic(this.bgmSound, true);
-        else
-            cc.audioEngine.stopMusic();
-        }else if(data.name === 'SFX') {
+    setSoundOn(data) {
+        if (data.name === 'BGM') {
+            if (data.isChecked)
+                cc.audioEngine.playMusic(this.bgmSound, true);
+            else
+                cc.audioEngine.stopMusic();
+        } else if (data.name === 'SFX') {
             this.isEffectOn = data.isChecked;
         }
     },
@@ -46,5 +46,8 @@ cc.Class({
         IDs.forEach(id => {
             cc.audioEngine.setVolume(id, percent);
         });
+    },
+    onDestroy() {
+        Emitter.removeEventsByTarget(this);
     }
 });

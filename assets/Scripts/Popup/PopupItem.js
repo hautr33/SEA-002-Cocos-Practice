@@ -1,4 +1,4 @@
-const Emitter = require('mEmitter');
+const Emitter = require('Emitter');
 const Events = require('EventKeys');
 
 cc.Class({

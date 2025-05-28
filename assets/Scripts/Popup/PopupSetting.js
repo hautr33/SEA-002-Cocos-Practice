@@ -1,4 +1,4 @@
-const Emitter = require('mEmitter');
+const Emitter = require('Emitter');
 const Events = require('EventKeys');
 
 cc.Class({
@@ -11,7 +11,7 @@ cc.Class({
     },
     onSliderClick(slider, data) {
         this.sliderTrack.width = Math.floor(this.sliderBackground.width * slider.progress)
-        Emitter.emit('SET_VOLUME', slider.progress);
+        Emitter.emit(Events.SOUND.SET_VOLUME, slider.progress);
     },
     onToggleClick(toggle, data) {
         var data = { name: data, isChecked: toggle.isChecked };
