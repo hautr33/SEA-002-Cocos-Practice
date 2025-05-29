@@ -1,6 +1,6 @@
 {
   "ver": "2.3.3",
-  "uuid": "65306d44-917a-42c2-892a-ae62d0664ae3",
+  "uuid": "03b4711b-d767-48fe-a467-6ddd7372c8df",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -9,10 +9,10 @@
   "packable": true,
   "platformSettings": {},
   "subMetas": {
-    "BackGround_Sample_04_Character_1920": {
+    "TabMenu_01_Focus_White": {
       "ver": "1.0.4",
-      "uuid": "f3d6e0d9-f41c-4c7f-8222-d31dfb3b3f93",
-      "rawTextureUuid": "65306d44-917a-42c2-892a-ae62d0664ae3",
+      "uuid": "4f396a7d-a283-4c26-a0db-89c2500a1201",
+      "rawTextureUuid": "03b4711b-d767-48fe-a467-6ddd7372c8df",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -20,10 +20,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 1920,
-      "height": 1080,
-      "rawWidth": 1920,
-      "rawHeight": 1080,
+      "width": 26,
+      "height": 156,
+      "rawWidth": 26,
+      "rawHeight": 156,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
