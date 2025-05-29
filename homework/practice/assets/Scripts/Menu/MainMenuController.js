@@ -5,6 +5,7 @@ cc.Class({
         soundController: require('SoundController'),
         mainLabel: cc.Node,
         homework1: cc.Node,
+        homework2: cc.Node,
         iconBgmOn: cc.Node,
         iconBgmOff: cc.Node,
         sliderBackground: cc.Node,
@@ -21,9 +22,13 @@ cc.Class({
     onHomework1Click(){
         this.show(this.homework1)
     },
+    onHomework2Click(){
+        this.show(this.homework2)
+    },
     hideAll(){
         this.mainLabel.active = false;
         this.homework1.active = false;
+        this.homework2.active = false;
     },
     show(menu){
         this.hideAll();
