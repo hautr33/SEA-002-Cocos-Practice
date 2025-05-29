@@ -3,6 +3,16 @@
   "collision-matrix": [
     [
       true
+    ],
+    [
+      false,
+      false,
+      true
+    ],
+    [
+      false,
+      true,
+      false
     ]
   ],
   "design-resolution-height": 720,
@@ -21,7 +31,9 @@
   "fit-height": false,
   "fit-width": false,
   "group-list": [
-    "default"
+    "default",
+    "Player",
+    "Monster"
   ],
   "last-module-event-record-time": 1747638861195,
   "simulator-orientation": false,

@@ -12,5 +12,10 @@ module.exports = {
     },
     SCENE: {
         SWITCH: 'SWITCH_SCENE',
+    },
+    GAME: {
+        SCORE: 'GAME_SCORE',
+        START: 'GAME_START',
+        OVER: 'GAME_OVER',
     }
 };

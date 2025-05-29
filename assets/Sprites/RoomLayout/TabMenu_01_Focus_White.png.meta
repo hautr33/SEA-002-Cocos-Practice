@@ -1,6 +1,6 @@
 {
   "ver": "2.3.3",
-  "uuid": "f29ee4cf-164f-4095-9876-98cd219f9fdb",
+  "uuid": "03b4711b-d767-48fe-a467-6ddd7372c8df",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -9,10 +9,10 @@
   "packable": true,
   "platformSettings": {},
   "subMetas": {
-    "Character_Sample_09": {
+    "TabMenu_01_Focus_White": {
       "ver": "1.0.4",
-      "uuid": "14de9c96-f746-4b4f-a750-32e7aa36b8c9",
-      "rawTextureUuid": "f29ee4cf-164f-4095-9876-98cd219f9fdb",
+      "uuid": "4f396a7d-a283-4c26-a0db-89c2500a1201",
+      "rawTextureUuid": "03b4711b-d767-48fe-a467-6ddd7372c8df",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -20,10 +20,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 232,
-      "height": 193,
-      "rawWidth": 232,
-      "rawHeight": 193,
+      "width": 26,
+      "height": 156,
+      "rawWidth": 26,
+      "rawHeight": 156,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

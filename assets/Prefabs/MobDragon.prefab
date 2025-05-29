@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "MobDog",
+    "_name": "MobDragon",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -38,13 +38,10 @@
       },
       {
         "__id__": 12
-      },
-      {
-        "__id__": 13
       }
     ],
     "_prefab": {
-      "__id__": 14
+      "__id__": 13
     },
     "_opacity": 255,
     "_color": {
@@ -186,7 +183,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "7423f738-8b2c-49b0-b6ff-d877f4651c01"
+      "__uuid__": "30bb8164-32bc-4726-9fbd-532fbfebefe8"
     },
     "fileId": "8fGMffHNxDYrFrV6RsvyLC",
     "sync": false
@@ -310,7 +307,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "7423f738-8b2c-49b0-b6ff-d877f4651c01"
+      "__uuid__": "30bb8164-32bc-4726-9fbd-532fbfebefe8"
     },
     "fileId": "b5CFOLf6hHlIVCtsEcW7Kp",
     "sync": false
@@ -331,7 +328,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "7e1ae375-cc95-426f-9388-311554d2bafb"
+      "__uuid__": "73c47650-8a2a-4a68-8d0c-2fef9c629476"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -358,44 +355,27 @@
     "tag": 0,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 50,
-      "y": 59
-    },
-    "_radius": 50,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CircleCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "tag": 0,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 135,
-      "y": 60
-    },
-    "_radius": 55,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CircleCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "tag": 0,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 180,
-      "y": 125
+      "x": 20,
+      "y": 20
     },
     "_radius": 20,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CircleCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 90,
+      "y": 75
+    },
+    "_radius": 75,
     "_id": ""
   },
   {
@@ -409,7 +389,7 @@
     "labelName": {
       "__id__": 6
     },
-    "speed": 200,
+    "speed": 250,
     "_id": ""
   },
   {
@@ -418,7 +398,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "7423f738-8b2c-49b0-b6ff-d877f4651c01"
+      "__uuid__": "30bb8164-32bc-4726-9fbd-532fbfebefe8"
     },
     "fileId": "c8LFQm+/9Lz4OZ+HUrUvjr",
     "sync": false
