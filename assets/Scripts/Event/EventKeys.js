@@ -17,5 +17,6 @@ module.exports = {
         SCORE: 'GAME_SCORE',
         START: 'GAME_START',
         OVER: 'GAME_OVER',
+        PLAYER_READY: 'GAME_PLAYER_READY',
     }
 };

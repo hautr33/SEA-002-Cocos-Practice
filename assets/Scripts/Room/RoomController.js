@@ -8,55 +8,77 @@ cc.Class({
     properties: {
         startBanner: cc.Node,
         gameOverBanner: cc.Node,
-        scoreNode: cc.Node,
-        buttonUp: cc.Node,
-        buttonDown: cc.Node,
-        buttonExit: cc.Node,
+        userInterface: cc.Node,
+        player: cc.Node,
+        scoreTrigger: cc.Node,
     },
+
     onLoad() {
         cc.director.getCollisionManager().enabled = true;
         // cc.director.getCollisionManager().enabledDebugDraw = true;
-        this.registerEvent()
+        this.registerEvent();
+        this.init();
+    },
+
+    init() {
         this.score = 0;
-        this.scoreNode.active = false;
+        this.scoreTrigger.x = this.player.x;
+        // Object.getPrototypeOf(this.player.getComponent('PlayerController')).init.bind(this);
+        this.setupUI();
+        this.showStartBanner()
+        this.playOpeningEffects();
+    },
+
+    onSwitchScene(event, data) {
+        if (data === 'Room') {
+            this.resetGame()
+        } else {
+            SceneConfig.nextScene = data
+            Emitter.emit(Events.SOUND.PLAY, 'CLICK');
+            cc.director.loadScene('Loading');
+        }
+    },
+
+    setupUI() {
         this.gameOverBanner.active = false;
-        this.hideAllButton();
-        this.startWingFloat();
-        this.startGlowEffect();
+        this.hideGameUI();
+    },
+
+    registerEvent() {
+        Emitter.registerEvent(Events.GAME.PLAYER_READY, this.showGameUI, this);
+        Emitter.registerEvent(Events.GAME.OVER, this.onGameOver, this);
+        Emitter.registerEvent(Events.GAME.SCORE, this.updateScore, this);
+    },
+
+    playOpeningEffects() {
+        this.animateWings();
+        this.animateGlow();
         this.startCountdown();
     },
-    onSwitchScene(event, data) {
-        SceneConfig.nextScene = data
-        Emitter.emit(Events.SOUND.PLAY, 'CLICK');
-        cc.director.loadScene('Loading');
+
+    animateWings() {
+        const wingLeft = this.startBanner.getChildByName('WingLeft');
+        const wingRight = this.startBanner.getChildByName('WingRight');
+        const angle = wingLeft.angle;
+
+        this.floatTween(wingLeft, angle, 5, 1);
+        this.floatTween(wingRight, -angle, -5, 1);
     },
-    startWingFloat() {
-        const rotation = 5;
-        const time = 1
-        let wingLeft = this.startBanner.getChildByName('WingLeft');
-        const angle = wingLeft.angle
-        let wingRight = this.startBanner.getChildByName('WingRight');
 
-        cc.tween(wingLeft)
+    floatTween(node, baseAngle, rotation, time) {
+        cc.tween(node)
             .repeatForever(
                 cc.tween()
-                    .to(time, { angle: angle + rotation }, { easing: 'sineInOut' })
-                    .to(time, { angle: angle - rotation }, { easing: 'sineInOut' })
-            )
-            .start();
-
-        cc.tween(wingRight)
-            .repeatForever(
-                cc.tween()
-                    .to(time, { angle: -angle - rotation }, { easing: 'sineInOut' })
-                    .to(time, { angle: -angle + rotation }, { easing: 'sineInOut' })
+                    .to(time, { angle: baseAngle + rotation }, { easing: 'sineInOut' })
+                    .to(time, { angle: baseAngle - rotation }, { easing: 'sineInOut' })
             )
             .start();
     },
-    startGlowEffect() {
-        let whiteGlow = this.startBanner.getChildByName('WhiteGlow');
 
-        cc.tween(whiteGlow)
+    animateGlow() {
+        const glow = this.startBanner.getChildByName('WhiteGlow');
+
+        cc.tween(glow)
             .repeatForever(
                 cc.tween()
                     .to(1, { opacity: 255 }, { easing: 'sineOut' })
@@ -64,93 +86,89 @@ cc.Class({
             )
             .start();
     },
+
     startCountdown() {
         const countdown = ['Battle Start', 'Battle Start', '3', '2', '1'];
         let index = 0;
-
-        let label = this.startBanner.getChildByName('Label').getComponent(cc.Label);
-        let shield = this.startBanner.getChildByName('Shield');
+        const label = this.startBanner.getChildByName('Label').getComponent(cc.Label);
+        const shield = this.startBanner.getChildByName('Shield');
 
         cc.tween(this.node)
             .repeat(countdown.length,
                 cc.tween()
                     .call(() => {
-                        if (index < 2)
-                            label.fontSize = 50
-                        if (index === 2) {
-                            label.fontSize = 100
-                            shield.active = true
-                        }
-
                         label.string = countdown[index];
+                        label.fontSize = index < 2 ? 50 : 100;
+                        shield.active = index >= 2;
                         index++;
                     })
                     .delay(1)
             )
             .call(() => {
-                this.scoreNode.active = true;
-                this.scoreNode.opacity = 0;
-                cc.tween(this.startBanner)
-                    .to(0.5, { opacity: 0 })
-                    .call(() => {
-                        this.startBanner.active = false;
-                        this.startBanner.opacity = 255;
-                        Emitter.emit(Events.GAME.START);
-                    })
-                    .start();
-                cc.tween(this.scoreNode)
-                    .to(1, { opacity: 255 })
-                    .start();
-
-                this.showAllButton()
+                cc.log('load')
+                this.hideStartBanner();
+                Emitter.emit(Events.GAME.START);
             })
             .start();
     },
+    showStartBanner() {
+        this.startBanner.active = true;
+        this.startBanner.opacity = 255;
+    },
+    hideStartBanner() {
+        this.startBanner.opacity = 255;
+        cc.tween(this.startBanner)
+            .to(0.5, { opacity: 0 })
+            .call(() => {
+                this.startBanner.active = false;
+            })
+            .start();
+    },
+
     updateScore() {
         this.score++
-        let label = this.scoreNode.getChildByName('Label').getComponent(cc.Label);
+        const scoreNode = this.userInterface.getChildByName('Score');
+        const label = scoreNode.getChildByName('Label').getComponent(cc.Label);
         label.string = this.score.toString()
     },
+
     onGameOver() {
         this.node.stopAllActions()
-        this.hideAllButton()
-        this.scoreNode.active = false;
+        this.hideGameUI()
+        this.displayGameOverBanner();
+    },
+
+    displayGameOverBanner() {
         this.gameOverBanner.active = true;
         this.gameOverBanner.opacity = 0;
-        let label = this.gameOverBanner.getChildByName('Score').getChildByName('Label').getComponent(cc.Label)
-        label.string = this.score
+        const label = this.gameOverBanner.getChildByName('Score').getChildByName('Label').getComponent(cc.Label);
+        label.string = this.score.toString();
         cc.tween(this.gameOverBanner)
             .to(1, { opacity: 255 })
             .start();
     },
-    hideAllButton() {
-        this.buttonUp.opacity = 0;
-        this.buttonDown.opacity = 0;
-        this.buttonExit.opacity = 0;
-        this.buttonUp.active = false
-        this.buttonDown.active = false
-        this.buttonExit.active = false
+
+    hideGameUI() {
+        cc.tween(this.userInterface)
+            .to(1, { opacity: 0 })
+            .start();
+        this.userInterface.active = false;
     },
-    showAllButton() {
-        this.buttonUp.active = true
-        this.buttonDown.active = true
-        this.buttonExit.active = true
-        cc.tween(this.buttonUp)
-            .to(1, { opacity: 255 })
-            .start();
-        cc.tween(this.buttonDown)
-            .to(1, { opacity: 255 })
-            .start();
-        cc.tween(this.buttonExit)
+
+    showGameUI() {
+        this.userInterface.active = true;
+        this.userInterface.opacity = 0;
+        cc.tween(this.userInterface)
             .to(1, { opacity: 255 })
             .start();
     },
-    registerEvent() {
-        Emitter.registerEvent(Events.GAME.OVER, this.onGameOver, this);
-        Emitter.registerEvent(Events.GAME.SCORE, this.updateScore, this);
+
+    resetGame() {
+        this.init();
     },
+
     onDestroy() {
-        cc.log('room destroy')
+        cc.log('onDestroy RoomController')
         Emitter.removeEventsByTarget(this);
     }
 });

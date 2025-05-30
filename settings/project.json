@@ -12,6 +12,13 @@
     [
       false,
       true,
+      false,
+      true
+    ],
+    [
+      false,
+      false,
+      true,
       false
     ]
   ],
@@ -33,7 +40,8 @@
   "group-list": [
     "default",
     "Player",
-    "Monster"
+    "Monster",
+    "ScoreLine"
   ],
   "last-module-event-record-time": 1747638861195,
   "simulator-orientation": false,
