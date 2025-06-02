@@ -5,7 +5,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        speed: 200
+        speed: 200,
     },
 
     setController(controller) {
@@ -52,8 +52,32 @@ cc.Class({
             this.hasScored = true;
             Emitter.emit(Events.GAME.SCORE);
         }
+        if (other.node.group === 'Bullet') {
+            cc.log('Hit');
+            const explosion = this.controller.explosion
+
+            const worldPosBullet = other.node.convertToWorldSpaceAR(cc.v2(0, 0));
+            const localPos = explosion.parent.convertToNodeSpaceAR(worldPosBullet);
+
+            explosion.setPosition(localPos);
+            explosion.active = true;
+            cc.tween(explosion)
+                .delay(0.05)
+                .to(0.5, { opacity: 0 })
+                .call(() => {
+                    explosion.active = false;
+                    explosion.opacity = 255;
+                })
+                .start();
+
+
+            other.node.destroy();
+            this.onDie();
+            Emitter.emit(Events.GAME.SCORE);
+        }
     },
-    onDestroy(){
+
+    onDestroy() {
         cc.log('onDestroy MonsterItem')
     }
 });

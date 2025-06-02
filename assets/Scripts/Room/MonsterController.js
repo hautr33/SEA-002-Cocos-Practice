@@ -10,6 +10,7 @@ cc.Class({
     properties: {
         monsterPrefabs: [cc.Prefab],
         spawnInterval: 3,
+        explosion: cc.Node
     },
 
     onLoad() {
@@ -19,7 +20,6 @@ cc.Class({
     },
 
     spawnRandomMonster() {
-        cc.log(this.monsterList)
         const prefab = this.getRandomPrefab();
         const monster = cc.instantiate(prefab);
         const position = this.getRandomSpawnPosition();

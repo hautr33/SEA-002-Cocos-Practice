@@ -13,12 +13,20 @@
       false,
       true,
       false,
+      true,
       true
     ],
     [
       false,
       false,
       true,
+      false
+    ],
+    [
+      false,
+      false,
+      true,
+      false,
       false
     ]
   ],
@@ -41,7 +49,8 @@
     "default",
     "Player",
     "Monster",
-    "ScoreLine"
+    "ScoreLine",
+    "Bullet"
   ],
   "last-module-event-record-time": 1747638861195,
   "simulator-orientation": false,

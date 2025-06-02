@@ -23,7 +23,6 @@ cc.Class({
     init() {
         this.score = 0;
         this.scoreTrigger.x = this.player.x;
-        // Object.getPrototypeOf(this.player.getComponent('PlayerController')).init.bind(this);
         this.setupUI();
         this.showStartBanner()
         this.playOpeningEffects();
@@ -105,16 +104,17 @@ cc.Class({
                     .delay(1)
             )
             .call(() => {
-                cc.log('load')
                 this.hideStartBanner();
                 Emitter.emit(Events.GAME.START);
             })
             .start();
     },
+
     showStartBanner() {
         this.startBanner.active = true;
         this.startBanner.opacity = 255;
     },
+
     hideStartBanner() {
         this.startBanner.opacity = 255;
         cc.tween(this.startBanner)
@@ -125,8 +125,12 @@ cc.Class({
             .start();
     },
 
-    updateScore() {
-        this.score++
+    updateScore(isTryAgain = false) {
+        if (isTryAgain) {
+            this.score = 0;
+        } else {
+            this.score++;
+        }
         const scoreNode = this.userInterface.getChildByName('Score');
         const label = scoreNode.getChildByName('Label').getComponent(cc.Label);
         label.string = this.score.toString()
@@ -165,6 +169,7 @@ cc.Class({
 
     resetGame() {
         this.init();
+        this.updateScore(true)
     },
 
     onDestroy() {
