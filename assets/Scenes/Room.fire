@@ -156,7 +156,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 371.5248982235242
+      "z": 370.65887281973977
     },
     "_scale": {
       "__type__": "cc.Vec3",
@@ -669,7 +669,7 @@
     "shootButton": {
       "__id__": 16
     },
-    "_cooldownTime": 0.5,
+    "cooldownTime": 5,
     "_id": "ffVVlYRshJaoC2VjAzKaP4"
   },
   {

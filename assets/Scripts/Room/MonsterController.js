@@ -48,8 +48,7 @@ cc.Class({
         const mob = monster.getComponent('MonsterItem');
         if (mob) {
             mob.setController(this);
-            mob.onSpawn();
-            mob.onMove();
+            mob.init();
         }
     },
 
@@ -78,7 +77,10 @@ cc.Class({
 
     removeMonster(monsterNode) {
         this.monsterList = this.monsterList.filter(mon => mon !== monsterNode);
-        if (monsterNode && monsterNode.isValid) monsterNode.destroy();
+        if (monsterNode && monsterNode.isValid) {
+            monsterNode.stopAllActions();
+            monsterNode.destroy();
+        }
     },
 
     clearAllMonsters() {
