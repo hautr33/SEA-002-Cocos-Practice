@@ -9,8 +9,9 @@ cc.Class({
     properties: {
         bulletParticle: cc.Prefab,
         shootButton: cc.Node,
-        cooldownTime: 5
+        _cooldownTime: 0.5
     },
+
     onLoad() {
         this.registerEvent();
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
@@ -66,15 +67,8 @@ cc.Class({
 
         this.player.setAnimation(1, 'shoot', false);
 
-        const bullet = cc.instantiate(this.bulletParticle);
-        const bulletStart = cc.v2(this.node.x + 100, this.node.y + 75);
-        bullet.setPosition(bulletStart);
-        this.node.parent.addChild(bullet);
-
-        cc.tween(bullet)
-            .to(1, { x: cc.winSize.width / 2 + 300 })
-            .call(() => bullet.destroy())
-            .start();
+        const bulletStart = this.node.convertToWorldSpaceAR(cc.v2(100, 300));
+        Emitter.emit(Events.PLAYER.SHOOT, bulletStart);
 
         this.startCooldown();
     },
@@ -88,7 +82,7 @@ cc.Class({
         bar.progress = 1;
 
         cc.tween(bar)
-            .to(this.cooldownTime, { progress: 0 })
+            .to(this._cooldownTime, { progress: 0 })
             .call(() => {
                 this.isShootCooldown = false;
             })

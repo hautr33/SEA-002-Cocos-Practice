@@ -54,22 +54,9 @@ cc.Class({
         }
         if (other.node.group === 'Bullet') {
             cc.log('Hit');
-            const explosion = this.controller.explosion
 
             const worldPosBullet = other.node.convertToWorldSpaceAR(cc.v2(0, 0));
-            const localPos = explosion.parent.convertToNodeSpaceAR(worldPosBullet);
-
-            explosion.setPosition(localPos);
-            explosion.active = true;
-            cc.tween(explosion)
-                .delay(0.05)
-                .to(0.5, { opacity: 0 })
-                .call(() => {
-                    explosion.active = false;
-                    explosion.opacity = 255;
-                })
-                .start();
-
+            Emitter.emit(Events.EFFECT.EXPLOSION, worldPosBullet);
 
             other.node.destroy();
             this.onDie();

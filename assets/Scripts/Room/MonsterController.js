@@ -9,8 +9,7 @@ cc.Class({
 
     properties: {
         monsterPrefabs: [cc.Prefab],
-        spawnInterval: 3,
-        explosion: cc.Node
+        _spawnInterval: 2,
     },
 
     onLoad() {
@@ -55,11 +54,25 @@ cc.Class({
     },
 
     onGameStart() {
-        this.schedule(this.spawnRandomMonster, this.spawnInterval);
+        this.isGameOver = false;
+        this.currentInterval = this._spawnInterval;
+        this.spawnNextMonster();
+    },
+
+    spawnNextMonster() {
+        if (!this.isGameOver) {
+            this.spawnRandomMonster();
+
+            this.currentInterval = Math.max(this.currentInterval * 0.99, 1);
+            this.scheduleOnce(() => {
+                this.spawnNextMonster();
+            }, this.currentInterval);
+        }
     },
 
     onGameOver() {
         this.unschedule(this.spawnRandomMonster);
+        this.isGameOver = true
         this.clearAllMonsters();
     },
 
