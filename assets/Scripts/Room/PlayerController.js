@@ -9,7 +9,7 @@ cc.Class({
     properties: {
         bulletParticle: cc.Prefab,
         shootButton: cc.Node,
-        _cooldownTime: 0.5
+        cooldownTime: 5
     },
 
     onLoad() {
@@ -80,9 +80,8 @@ cc.Class({
             .getComponent(cc.ProgressBar);
 
         bar.progress = 1;
-
         cc.tween(bar)
-            .to(this._cooldownTime, { progress: 0 })
+            .to(this.cooldownTime, { progress: 0 })
             .call(() => {
                 this.isShootCooldown = false;
             })

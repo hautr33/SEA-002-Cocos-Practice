@@ -1,5 +1,6 @@
 const Emitter = require('Emitter');
 const Events = require('EventKeys');
+const MonsterStateMachine = require('./MonsterStateMachine');
 
 cc.Class({
     extends: cc.Component,
@@ -12,7 +13,9 @@ cc.Class({
         this.controller = controller;
     },
 
-    onSpawn() {
+    init() {
+        this.fsm = new MonsterStateMachine(this);
+        this.fsm.transition('spawn');
         this.node.opacity = 255;
         this.node.scale = 0.7;
     },
@@ -37,29 +40,35 @@ cc.Class({
             .start();
     },
 
-    onMove() {
+    handleSpawn() {
         this.bounceY();
-        this.moveToLeft(() => this.onDie());
+        this.moveToLeft(() => {
+            this.fsm.transition('die');
+        });
     },
 
-    onDie() {
+    handleHit() {
+        this.node.stopAllActions();
+        Emitter.emit(Events.EFFECT.EXPLOSION, this.bulletWorldPos);
+    },
+
+    handleDie() {
         if (this.controller) this.controller.removeMonster(this.node);
         this.node.destroy();
     },
+
 
     onCollisionEnter(other, self) {
         if (other.node.group === 'ScoreLine' && !this.hasScored) {
             this.hasScored = true;
             Emitter.emit(Events.GAME.SCORE);
         }
-        if (other.node.group === 'Bullet') {
-            cc.log('Hit');
-
-            const worldPosBullet = other.node.convertToWorldSpaceAR(cc.v2(0, 0));
-            Emitter.emit(Events.EFFECT.EXPLOSION, worldPosBullet);
-
+        if (other.node.group === 'Bullet' && this.fsm.can('hit')) {
+            this.bulletWorldPos = other.node.convertToWorldSpaceAR(cc.v2(0, 0));
             other.node.destroy();
-            this.onDie();
+
+            this.fsm.transition('hit');
+            this.fsm.transition('die');
             Emitter.emit(Events.GAME.SCORE);
         }
     },
