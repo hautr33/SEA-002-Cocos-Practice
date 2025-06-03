@@ -1,24 +1,21 @@
+const Emitter = require('Emitter');
+const Events = require('EventKeys');
+
 cc.Class({
     extends: require('PopupItem'),
 
     properties: {
-        soundController: require('SoundController'),
         bgmToggle: cc.Toggle,
         sliderBackground: cc.Node,
         sliderTrack: cc.Node,
     },
-    onSliderClick(slider, data){
+    onSliderClick(slider, data) {
         this.sliderTrack.width = Math.floor(this.sliderBackground.width * slider.progress)
-        this.soundController.setVolume(slider.progress)
+        Emitter.emit(Events.SOUND.SET_VOLUME, slider.progress);
     },
-    onBgmToggleClick(toggle, data) {
-        if (toggle.isChecked) {
-            this.soundController.setMusiceOn(true)
-        } else {
-            this.soundController.setMusiceOn(false)
-        }
-    },
-    onSfxToggleClick(toggle, data) {
-        this.soundController.setEffectOn(toggle.isChecked)
+    onToggleClick(toggle, data) {
+        var data = { name: data, isChecked: toggle.isChecked };
+        Emitter.emit(Events.SOUND.SET_SOUND_ON, data);
+        Emitter.emit(Events.SOUND.PLAY, 'CLICK');
     }
 });

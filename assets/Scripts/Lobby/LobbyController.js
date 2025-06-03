@@ -1,13 +1,17 @@
+const Emitter = require('Emitter');
+const Events = require('EventKeys');
+const SceneConfig = require('SceneConfig');
+
 cc.Class({
     extends: cc.Component,
 
-    properties: {
-        popupController: require('PopupController'),
+    onOpenPopup(event, data) {
+        Emitter.emit(Events.POPUP.SHOW, data);
+        Emitter.emit(Events.SOUND.PLAY, 'CLICK');
     },
-    onSettingClick() {
-        this.popupController.showSetting()
-    },
-    onRankClick() {
-        this.popupController.showRank()
+    onSwitchScene(event, data){
+        SceneConfig.nextScene = data
+        Emitter.emit(Events.SOUND.PLAY, 'CLICK');
+        cc.director.loadScene('Loading');
     }
 });

@@ -1,8 +1,9 @@
+const Emitter = require('Emitter');
+const Events = require('EventKeys');
+
 cc.Class({
     extends: cc.Component,
 
-    properties: {
-    },
     onLoad() {
         this.hide()
     },
@@ -11,5 +12,6 @@ cc.Class({
     },
     hide() {
         this.node.active = false;
+        Emitter.emit(Events.SOUND.PLAY, 'CLICK');
     }
 });
