@@ -17,6 +17,14 @@ module.exports = {
         SCORE: 'GAME_SCORE',
         START: 'GAME_START',
         OVER: 'GAME_OVER',
+        RESET: 'GAME_RESET',
         PLAYER_READY: 'GAME_PLAYER_READY',
-    }
+        SHOW_FINAL_SCORE: 'GAME_SHOW_FINAL_SCORE',
+    },
+    PLAYER: {
+        SHOOT: 'PLAYER_SHOOT'
+    },
+    EFFECT: {
+        EXPLOSION: 'EFFECT_EXPLOSION',
+    },
 };
